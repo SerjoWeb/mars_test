@@ -1,0 +1,194 @@
+{
+  "uuid": "8d38ff12-26cf-4929-bb2d-959847ddff1e",
+  "lastMigration": 27,
+  "name": "Api",
+  "endpointPrefix": "api/auth",
+  "latency": 0,
+  "port": 3000,
+  "hostname": "",
+  "folders": [],
+  "routes": [
+    {
+      "uuid": "3673a097-d2cc-46be-977d-64a38979d994",
+      "type": "http",
+      "documentation": "",
+      "method": "post",
+      "endpoint": "signin",
+      "responses": [
+        {
+          "uuid": "387da709-9d91-404d-b61b-621950d61e30",
+          "body": "{\n  \"name\": \"Serjo\",\n  \"email\": \"serjo@email.com\",\n  \"token\": \"some-JWT-token\",\n  \"status\": 200,\n  \"message\": \"successfully logged in\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "body",
+              "modifier": "email",
+              "value": "serjo@email.com",
+              "invert": false,
+              "operator": "equals"
+            },
+            {
+              "target": "body",
+              "modifier": "password",
+              "value": "12345",
+              "invert": false,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "AND",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "0a7969bb-d498-4f38-9479-c632698b837a",
+          "body": "{\n  \"status\": 401,\n  \"message\": \"invalid credentials\"\n}",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "730dc591-ffd3-4c24-ac86-f44902afe3cf",
+      "type": "http",
+      "documentation": "",
+      "method": "post",
+      "endpoint": "signup",
+      "responses": [
+        {
+          "uuid": "847b7355-24f3-46bb-a147-9e5f57c95127",
+          "body": "{\n  \"name\": \"Serjo\",\n  \"email\": \"serjo@email.com\",\n  \"token\": \"some-JWT-token\",\n  \"status\": 200,\n  \"message\": \"successfully created and logged in\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "7284d94e-e5a1-4bde-81b1-a39e8c3448a5",
+      "type": "http",
+      "documentation": "",
+      "method": "post",
+      "endpoint": "recover-password",
+      "responses": [
+        {
+          "uuid": "1e5905a5-a604-43e2-8e4b-aae03a516dad",
+          "body": "{\n  \"status\": 200,\n  \"message\": \"Please, check your email, there will be a message with the further instructions\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "body",
+              "modifier": "email",
+              "value": "",
+              "invert": true,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    }
+  ],
+  "rootChildren": [
+    {
+      "type": "route",
+      "uuid": "3673a097-d2cc-46be-977d-64a38979d994"
+    },
+    {
+      "type": "route",
+      "uuid": "730dc591-ffd3-4c24-ac86-f44902afe3cf"
+    },
+    {
+      "type": "route",
+      "uuid": "7284d94e-e5a1-4bde-81b1-a39e8c3448a5"
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [
+    {
+      "key": "Content-Type",
+      "value": "application/json"
+    },
+    {
+      "key": "Access-Control-Allow-Origin",
+      "value": "*"
+    },
+    {
+      "key": "Access-Control-Allow-Methods",
+      "value": "GET,POST,PUT,PATCH,DELETE,HEAD,OPTIONS"
+    },
+    {
+      "key": "Access-Control-Allow-Headers",
+      "value": "Content-Type, Origin, Accept, Authorization, Content-Length, X-Requested-With"
+    }
+  ],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "data": []
+}
